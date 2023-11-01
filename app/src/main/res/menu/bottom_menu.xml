@@ -7,20 +7,25 @@
         android:title="Home"
         android:icon="@drawable/baseline_home_24"/>
 
-    <item
-        android:id="@+id/homes"
-        android:title="Homex"
-        android:icon="@drawable/baseline_home_24"/>
 
-    <item
-        android:id="@+id/fab"
-        android:title=""
-        android:enabled="false"/>
+
 
     <item
         android:id="@+id/list"
         android:title="Marketplace"
         android:icon="@drawable/baseline_menu_24"/>
+
+    <item
+        android:id="@+id/fab"
+        android:title=""
+        android:enabled="true"/>
+
+
+    <item
+        android:id="@+id/Parametre"
+        android:title="Settings"
+        android:icon="@drawable/baseline_settings_24"/>
+
 
 
 
