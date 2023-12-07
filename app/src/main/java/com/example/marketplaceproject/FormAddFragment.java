@@ -31,7 +31,10 @@ public class FormAddFragment extends Fragment {
             public void onClick(View v) {
                 Database myDB = new Database(getActivity()); // Use getActivity() to get the context
                 myDB.addproduct(ProductTitle_input.getText().toString().trim(),
-                        ProductDescription_input.getText().toString().trim());
+                        ProductDescription_input.getText().toString().trim(),
+                ProductPrice_input.getText().toString().trim(),
+                        ProductSellerInfo_input.getText().toString().trim());
+
             }
         });
 

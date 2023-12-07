@@ -17,28 +17,22 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 
-public class ListFragment extends Fragment {
+public class ListFragment extends Fragment implements CustomAdapter.OnItemClickListener {
 
     RecyclerView recyclerView;
-CustomAdapter adapter;
     Database myDB;
     CustomAdapter customAdapter;
-    ArrayList<String> product_id , product_title , product_description , product_price , product_sellerinfo;
+    ArrayList<String> product_id, product_title, product_description, product_price, product_sellerinfo;
     FloatingActionButton addBtnForm;
-
 
     public ListFragment() {
         // Required empty public constructor
     }
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //RECYCLER VIEW PARAM // ARRAYS
-        // PASS DB CONTEXT AS REQUIRED CALL FN
         myDB = new Database(requireContext());
         product_id = new ArrayList<>();
         product_title = new ArrayList<>();
@@ -51,37 +45,47 @@ CustomAdapter adapter;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_list, container, false);
 
-        // Find the RecyclerView in the inflated layout
         recyclerView = rootView.findViewById(R.id.RecyclerView);
+        customAdapter = new CustomAdapter(requireContext(), product_id, product_title, product_description, product_price, product_sellerinfo);
+        customAdapter.setOnItemClickListener(this); // Set the click listener here
 
-        adapter = new CustomAdapter(requireContext(), product_id, product_title, product_description, product_price, product_sellerinfo);
-
-
-        recyclerView.setAdapter(adapter);
-
-        // Use requireContext() to provide the correct Context to LinearLayoutManager
+        recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
-        StoreDatainArrays();
+        storeDataInArrays();
 
         return rootView;
     }
 
-
-    void StoreDatainArrays(){
+    void storeDataInArrays() {
         Cursor cursor = myDB.readAllData();
-        if(cursor.getCount() == 0){
+        if (cursor.getCount() == 0) {
             Toast.makeText(getContext(), "No Data", Toast.LENGTH_SHORT).show();
         } else {
-            while (cursor.moveToNext()){
+            while (cursor.moveToNext()) {
                 product_id.add(cursor.getString(0));
                 product_title.add(cursor.getString(1));
                 product_description.add(cursor.getString(2));
-                product_price.add(cursor.getString(0));
-                product_sellerinfo.add(cursor.getString(0));
+                product_price.add(cursor.getString(3));
+                product_sellerinfo.add(cursor.getString(4));
             }
         }
     }
 
+    @Override
+    public void onDeleteClick(int position) {
+        // Handle delete action here
+        int productIdToDelete = Integer.parseInt(product_id.get(position));
+        myDB.deleteProduct(productIdToDelete);
 
+        // Remove the item from the ArrayLists
+        product_id.remove(position);
+        product_title.remove(position);
+        product_description.remove(position);
+        product_price.remove(position);
+        product_sellerinfo.remove(position);
+
+        // Notify the adapter that the data set has changed
+        customAdapter.notifyDataSetChanged();
+    }
 }

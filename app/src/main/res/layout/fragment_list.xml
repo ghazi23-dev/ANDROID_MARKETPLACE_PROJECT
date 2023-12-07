@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
     app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/padd"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp">
+        android:layout_height="match_parent"
+        android:padding="12dp"
+        android:paddingBottom="50dp">
 
         <TextView
             android:id="@+id/product_id_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:text="1"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,25 +35,79 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/product_id_txt"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/product_id_txt" />
 
         <TextView
             android:id="@+id/product_price_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="152dp"
-            android:layout_marginTop="32dp"
-            android:text="Product Price"
+
+            android:fontFamily="sans-serif-medium"
+            android:gravity="start"
+            android:text=""
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@+id/RecyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.988"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.004" />
+
+        <TextView
+            android:id="@+id/product_description_txt"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="@+id/product_title_txt"
+            app:layout_constraintTop_toBottomOf="@+id/product_title_txt" />
+
+        <TextView
+            android:id="@+id/product_sellerinfo_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:fontFamily="sans-serif-medium"
+
+            app:layout_constraintEnd_toStartOf="@+id/buttondelete"
+            app:layout_constraintHorizontal_bias="0.846"
             app:layout_constraintStart_toEndOf="@+id/product_title_txt"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/product_sellerinfo_txt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+
+            android:text="TND"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/product_price_txt"
+            app:layout_constraintHorizontal_bias="0.955"
+            app:layout_constraintStart_toEndOf="@+id/product_title_txt"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="12dp" />
+            tools:layout_editor_absoluteX="16dp" />
+
+        <ImageView
+            android:id="@+id/buttondelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/RecyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/product_id_txt"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/baselinedelete" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
