@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
         imageView.setVisibility(View.INVISIBLE);
         imageViewnotif.setVisibility(View.INVISIBLE);
 
-        // Show the ProgressBar for 5 seconds
+        // Show the ProgressBar for 2 seconds
         progressBar.setVisibility(View.VISIBLE);
         handler.postDelayed(new Runnable() {
             @Override
@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment {
                 imageView.setVisibility(View.VISIBLE); // Show the content
                 imageViewnotif.setVisibility(View.VISIBLE);
             }
-        }, 2000); // 5000 milliseconds = 5 seconds
+        }, 2000); // 2s
 
         return rootView;
     }

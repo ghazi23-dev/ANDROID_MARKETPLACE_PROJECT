@@ -21,8 +21,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-
-
     FloatingActionButton addBtnForm;
 
     @Override
@@ -43,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             } else if (item.getItemId() == R.id.Aboutus) {
                 replaceFragment(new AboutFragment());
             }
-            // Add more cases as needed for other menu items
             return true;
         });
 
@@ -54,13 +51,11 @@ public class MainActivity extends AppCompatActivity {
         addBtnForm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
 
         // Find the FloatingActionButton // PERFORM NEW ACTION
         FloatingActionButton addBtnForm = findViewById(R.id.addBtnForm);
-
         // Set a click listener for the FloatingActionButton
         addBtnForm.setOnClickListener(new View.OnClickListener() {
             @Override

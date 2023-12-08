@@ -66,6 +66,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         TextView product_id_txt, product_title_txt, product_price_txt, product_description_txt, product_sellerinfo_txt;
     //    Button buttonDelete;
 ImageView buttonDelete;
+//constructor View Recy
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 

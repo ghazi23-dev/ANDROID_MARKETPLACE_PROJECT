@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class FormAddFragment extends Fragment {
 
@@ -29,18 +30,26 @@ public class FormAddFragment extends Fragment {
         button_addForm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Database myDB = new Database(getActivity()); // Use getActivity() to get the context
-                myDB.addproduct(ProductTitle_input.getText().toString().trim(),
-                        ProductDescription_input.getText().toString().trim(),
-                ProductPrice_input.getText().toString().trim(),
-                        ProductSellerInfo_input.getText().toString().trim());
+                String title = ProductTitle_input.getText().toString().trim();
+                String description = ProductDescription_input.getText().toString().trim();
+                String price = ProductPrice_input.getText().toString().trim();
+                String sellerInfo = ProductSellerInfo_input.getText().toString().trim();
 
+                if (title.isEmpty() || description.isEmpty() || price.isEmpty() || sellerInfo.isEmpty()) {
+                    // Display a message indicating that fields are empty
+                    Toast.makeText(getActivity(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                } else {
+                    Database myDB = new Database(getActivity()); // Use getActivity() to get the context
+                    myDB.addproduct(title, description, price, sellerInfo);
+// Clear Fields **
+                    ProductTitle_input.setText("");
+                    ProductDescription_input.setText("");
+                    ProductPrice_input.setText("");
+                    ProductSellerInfo_input.setText("");
+                }
             }
         });
 
-
-        return view; // Add this return statement
-
-
-}
+        return view;
     }
+}

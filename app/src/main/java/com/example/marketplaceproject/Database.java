@@ -36,10 +36,11 @@ public class Database extends SQLiteOpenHelper {
         this.context = context;
     }
     @Override
+    //DB no exist
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NAME +
                 " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_TITLE + " TEXT, " +  // Add space before "TEXTT
+                COLUMN_TITLE + " TEXT, " +
                 COLUMN_DESCRIPTION + " TEXT," +
                 COLUMN_PRICE + " TEXT," +
                COLUMN_SELLERINFO + " TEXT" +
